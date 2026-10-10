@@ -1,6 +1,10 @@
 import express  from "express";
+import cors from "cors";
 
 const app = express();
+
+app.use(express.json());
+
 const cards = [
     {
       "id": "1",
@@ -23,6 +27,19 @@ const cards = [
   ];
   app.get ("/cards",(req,res) =>{
     res.json(cards);
+  })
+
+  app.post("/cards",(req,res)=>{
+    const title = req.body.title;
+
+    const id = Math.ceil(Math.random()* 100);
+
+    cards.push({id: String(id),
+        title: title,
+        isDone : false,
+        isUrgent: false
+
+    });
   })
 
   app.listen(3001,() =>{
