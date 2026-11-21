@@ -36,9 +36,10 @@ return newCard;
 }
 
 export function deleteCard(id:string){
+  let oldCards = cards;
     const newCards = cards.filter(
         card => card.id !== id
     );
 cards = newCards;
-    return newCards.length !== cards.length;
+    return oldCards.length !== cards.length;
 }
